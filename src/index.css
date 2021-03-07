@@ -4,10 +4,24 @@ html {
   font-family: sans-serif;
 }
 
-*[placeholder]:empty:before {
+.input-field {
+  padding: 2%;
+  height: calc(5vw - 4%);
+}
+
+.input-field[placeholder]:empty:before {
   content: attr(placeholder);
   color: grey;
   font-weight: bolder;
   font-size: 2vw;
   text-transform: uppercase;
+}
+
+.output-field {
+  padding: 2%;
+  min-height: calc(5vw - 4%);
+}
+
+#keyword {
+  color: gold;
 }
