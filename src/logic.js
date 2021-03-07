@@ -1,8 +1,8 @@
 const keywordDOM = document.getElementById('keyword')
-const original = document.getElementById('original')
-const originalEncrypted = document.getElementById('original-encrypted')
-const scrambled = document.getElementById('scrambled')
-const decrypted = document.getElementById('decrypted')
+const originalDOM = document.getElementById('original')
+const originalEncryptedDOM = document.getElementById('original-encrypted')
+const scrambledDOM = document.getElementById('scrambled')
+const decryptedDOM = document.getElementById('decrypted')
 
 const isLetter = (c) => /[a-zA-Z]/.test(c)
 
@@ -11,19 +11,19 @@ const encrypt = (c, i) => {
     const cCode = upper.charCodeAt(0)
     const keyword = keywordDOM.innerText.
         replace(/\s/g, '').toUpperCase()
-    console.log(keyword)
+
     const keyCode = keyword.charCodeAt(i % keyword.length)
     const encCode = 65 + (keyCode + cCode - 129) % 26 
     return String.fromCharCode(encCode)
 }
 
-original.oninput = (e) => {
+originalDOM.oninput = (e) => {
     const keyword = keywordDOM.innerText
     if (!keyword) {
         return
     }
 
-    const text = original.innerText
+    const text = originalDOM.innerText
     let result = ''
     let keyCounter = 0
     for (let i = 0; i < text.length; i++) {
@@ -36,5 +36,6 @@ original.oninput = (e) => {
         }
     }
 
-    originalEncrypted.innerText = result
+    originalEncryptedDOM.innerText = result
 }
+
