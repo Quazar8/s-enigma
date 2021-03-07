@@ -1,9 +1,13 @@
 html {
   background-color: rgb(6, 5, 14);
   color: rgb(250, 245, 245);
+  font-family: sans-serif;
 }
 
 *[placeholder]:empty:before {
   content: attr(placeholder);
   color: grey;
+  font-weight: bolder;
+  font-size: 2vw;
+  text-transform: uppercase;
 }
