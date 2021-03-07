@@ -9,8 +9,9 @@ const isLetter = (c) => /[a-zA-Z]/.test(c)
 const encrypt = (c, i) => {
     const upper = c.toUpperCase()
     const cCode = upper.charCodeAt(0)
-    const keyword = keywordDOM.innerText.toUpperCase()
-
+    const keyword = keywordDOM.innerText.
+        replace(/\s/g, '').toUpperCase()
+    console.log(keyword)
     const keyCode = keyword.charCodeAt(i % keyword.length)
     const encCode = 65 + (keyCode + cCode - 129) % 26 
     return String.fromCharCode(encCode)
