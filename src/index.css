@@ -4,6 +4,10 @@ html {
   font-family: sans-serif;
 }
 
+body {
+  -webkit-app-region: drag;
+}
+
 .input-field {
   padding: 2%;
   height: calc(5vw - 4%);
