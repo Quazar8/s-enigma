@@ -3,6 +3,7 @@ const originalDOM = document.getElementById('original')
 const originalEncryptedDOM = document.getElementById('original-encrypted')
 const scrambledDOM = document.getElementById('scrambled')
 const decryptedDOM = document.getElementById('decrypted')
+const closeWindowBtn = document.getElementById('close-window-btn')
 
 const isLetter = (c) => /[a-zA-Z]/.test(c)
 
@@ -91,3 +92,7 @@ const keywordChangeHandler = (e) => {
 }
 
 keywordDOM.oninput = keywordChangeHandler
+
+closeWindowBtn.onclick = (e) => {
+    console.log('close button')
+}

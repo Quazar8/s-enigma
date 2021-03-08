@@ -35,3 +35,12 @@ body {
 #keyword {
   color: gold;
 }
+
+.window-control-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+#close-window-btn {
+  -webkit-app-region: no-drag;
+}
