@@ -17,7 +17,7 @@ const encrypt = (c, i) => {
     return String.fromCharCode(encCode)
 }
 
-const encryptOriginalText = (e) => {
+const encryptOriginalText = () => {
     const keyword = keywordDOM.innerText
     if (!keyword) {
         return
@@ -56,7 +56,7 @@ const decrypt = (c, i) => {
     return String.fromCharCode(decCode)
 }
 
-decryptScrambledText = (e) => {
+decryptScrambledText = () => {
     const keyword = keywordDOM.innerText
     if (!keyword) {
         return
@@ -79,3 +79,15 @@ decryptScrambledText = (e) => {
 }
 
 scrambledDOM.oninput = decryptScrambledText
+
+const keywordChangeHandler = (e) => {
+    if (originalDOM.innerText) {
+        encryptOriginalText()
+    }
+
+    if (scrambledDOM.innerText) {
+        decryptScrambledText()
+    }
+}
+
+keywordDOM.oninput = keywordChangeHandler
