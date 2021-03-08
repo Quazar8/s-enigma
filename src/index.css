@@ -2,15 +2,21 @@ html {
   background-color: rgb(6, 5, 14);
   color: rgb(250, 245, 245);
   font-family: sans-serif;
+  height: 100%;
 }
 
 body {
+  margin: 0;
+  padding: 1%;
+  box-sizing: border-box;
+  height: 100%;
   -webkit-app-region: drag;
 }
 
 .input-field {
   padding: 2%;
   height: calc(5vw - 4%);
+  -webkit-app-region: no-drag;
 }
 
 .input-field[placeholder]:empty:before {
