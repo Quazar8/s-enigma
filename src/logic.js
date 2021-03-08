@@ -93,6 +93,6 @@ const keywordChangeHandler = (e) => {
 
 keywordDOM.oninput = keywordChangeHandler
 
-closeWindowBtn.onclick = (e) => {
-    console.log('close button')
+closeWindowBtn.onclick = () => {
+    window.close()
 }
