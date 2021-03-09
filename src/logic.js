@@ -100,9 +100,9 @@ const appendCopiedNotification = () => {
     div.className = "copied-notification"
     div.innerText = "Copied!"
     originalEncryptedDOM.appendChild(div)
-    setTimeout(() => {
+    div.onanimationend = () => {
         originalEncryptedDOM.removeChild(div)
-    }, 1000)
+    }
 }
 
 originalEncryptedDOM.onclick = () => {
