@@ -60,7 +60,7 @@ body {
   }
 }
 
-#original-encrypted .copied-notification {
+.copied-notification {
   position: fixed;
   background: rgb(101, 101, 250);
   font-family: 'Orbitron', monospace;

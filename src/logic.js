@@ -93,7 +93,7 @@ scrambledDOM.oninput = decryptScrambledText
 
 //FOR TESTING
 // keywordDOM.innerText = 'hot fries'
-// originalDOM.innerText = "choke me"
+// originalDOM.innerText = "nice one"
 // encryptOriginalText()
 
 const appendCopiedNotification = (mouseX, mouseY) => {
@@ -104,10 +104,10 @@ const appendCopiedNotification = (mouseX, mouseY) => {
     div.style.left = mouseX + 10 + 'px'
 
     div.onanimationend = () => {
-        originalEncryptedDOM.removeChild(div)
+        document.body.removeChild(div)
     }
 
-    originalEncryptedDOM.appendChild(div)
+    document.body.appendChild(div)
 }
 
 originalEncryptedDOM.onclick = (e) => {
