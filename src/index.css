@@ -1,7 +1,12 @@
+@font-face {
+  font-family: Orbitron;
+  src: url('./static//orbitron.ttf')
+}
+
 html {
   background-color: rgb(6, 5, 14);
   color: rgb(250, 245, 245);
-  font-family: sans-serif;
+  font-family: 'Orbitron', monospace;
   height: 100%;
 }
 
