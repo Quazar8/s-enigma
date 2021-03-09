@@ -28,6 +28,7 @@ body {
   min-height: calc(5vw - 4%);
   -webkit-app-region: no-drag;
   font-size: 3vw;
+  text-transform: uppercase;
 }
 
 .input-field[placeholder]:empty:before {
@@ -43,6 +44,25 @@ body {
   min-height: calc(5vw - 4%);
   font-family: 'Major-Mono', monospace;
   font-size: 3vw;
+  -webkit-app-region: no-drag;
+}
+
+#original-encrypted {
+  position: relative;
+}
+
+#original-encrypted .copied-notification {
+  background: rgb(101, 101, 250);
+  font-family: 'Orbitron', monospace;
+  font-size: 1.5vw;
+  padding: 1%;
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+} 
+
+#original-encrypted:hover {
+  cursor: pointer;
 }
 
 #keyword {
