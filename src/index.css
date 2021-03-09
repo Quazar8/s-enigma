@@ -1,6 +1,11 @@
 @font-face {
   font-family: Orbitron;
-  src: url('./static//orbitron.ttf')
+  src: url('./static/orbitron.ttf')
+}
+
+@font-face {
+  font-family: Major-Mono;
+  src: url('./static/MajorMonoDisplay.ttf');
 }
 
 html {
@@ -36,6 +41,8 @@ body {
 .output-field {
   padding: 2%;
   min-height: calc(5vw - 4%);
+  font-family: 'Major-Mono', monospace;
+  font-size: 3vw;
 }
 
 #keyword {
