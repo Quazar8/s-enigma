@@ -61,13 +61,11 @@ body {
 }
 
 #original-encrypted .copied-notification {
+  position: fixed;
   background: rgb(101, 101, 250);
   font-family: 'Orbitron', monospace;
   font-size: 1.5vw;
   padding: 1%;
-  position: absolute;
-  bottom: 0;
-  left: 50%;
   animation: copied 0.7s 2 linear alternate;
 } 
 

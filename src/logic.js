@@ -91,23 +91,28 @@ keywordDOM.oninput = keywordChangeHandler
 originalDOM.oninput = encryptOriginalText
 scrambledDOM.oninput = decryptScrambledText
 
-keywordDOM.innerText = 'hot fries'
-originalDOM.innerText = "choke me"
-encryptOriginalText()
+//FOR TESTING
+// keywordDOM.innerText = 'hot fries'
+// originalDOM.innerText = "choke me"
+// encryptOriginalText()
 
-const appendCopiedNotification = () => {
+const appendCopiedNotification = (mouseX, mouseY) => {
     let div = document.createElement('div')
     div.className = "copied-notification"
     div.innerText = "Copied!"
-    originalEncryptedDOM.appendChild(div)
+    div.style.top = mouseY + 'px'
+    div.style.left = mouseX + 10 + 'px'
+
     div.onanimationend = () => {
         originalEncryptedDOM.removeChild(div)
     }
+
+    originalEncryptedDOM.appendChild(div)
 }
 
-originalEncryptedDOM.onclick = () => {
+originalEncryptedDOM.onclick = (e) => {
     window.preloaded.copyToClip(originalEncryptedDOM.innerText)
-    appendCopiedNotification()
+    appendCopiedNotification(e.pageX, e.pageY)
 }
 
 closeWindowBtn.onclick = () => {
