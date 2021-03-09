@@ -82,6 +82,7 @@ decryptScrambledText = () => {
 scrambledDOM.oninput = decryptScrambledText
 
 const keywordChangeHandler = (e) => {
+    window.preloaded.copyToClip()
     if (originalDOM.innerText) {
         encryptOriginalText()
     }
