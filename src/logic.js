@@ -40,8 +40,6 @@ const encryptOriginalText = () => {
     originalEncryptedDOM.innerText = result
 }
 
-originalDOM.oninput = encryptOriginalText
-
 const decrypt = (c, i) => {
     const upper = c.toUpperCase()
     const cCode = upper.charCodeAt(0)
@@ -79,10 +77,7 @@ decryptScrambledText = () => {
     decryptedDOM.innerText = result
 }
 
-scrambledDOM.oninput = decryptScrambledText
-
 const keywordChangeHandler = (e) => {
-    window.preloaded.copyToClip()
     if (originalDOM.innerText) {
         encryptOriginalText()
     }
@@ -93,6 +88,12 @@ const keywordChangeHandler = (e) => {
 }
 
 keywordDOM.oninput = keywordChangeHandler
+originalDOM.oninput = encryptOriginalText
+scrambledDOM.oninput = decryptScrambledText
+
+originalEncryptedDOM.onclick = () => {
+    window.preloaded.copyToClip(originalEncryptedDOM.innerText)
+}
 
 closeWindowBtn.onclick = () => {
     window.close()
