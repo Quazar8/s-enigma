@@ -7,6 +7,13 @@ const closeWindowBtn = document.getElementById('close-window-btn')
 
 const isLetter = (c) => /[a-zA-Z]/.test(c)
 
+const createLetterSpan = (letter) => {
+    const span = document.createElement('span')
+    span.innerText = letter
+    span.className = 'result-letter'
+    return span
+}
+
 const encrypt = (c, i) => {
     const upper = c.toUpperCase()
     const cCode = upper.charCodeAt(0)
@@ -24,20 +31,20 @@ const encryptOriginalText = () => {
         return
     }
 
+    originalEncryptedDOM.innerHTML = ''
+
     const text = originalDOM.innerText
-    let result = ''
     let keyCounter = 0
     for (let i = 0; i < text.length; i++) {
         let char = text[i]
         if (isLetter(char)) {
-            result += encrypt(char, keyCounter)
+            char = encrypt(char, keyCounter)
             keyCounter++
-        } else {
-            result += char
-        }
-    }
+        } 
 
-    originalEncryptedDOM.innerText = result
+        const span = createLetterSpan(char)
+        originalEncryptedDOM.appendChild(span)
+    }
 }
 
 const decrypt = (c, i) => {
@@ -91,11 +98,6 @@ keywordDOM.oninput = keywordChangeHandler
 originalDOM.oninput = encryptOriginalText
 scrambledDOM.oninput = decryptScrambledText
 
-//FOR TESTING
-// keywordDOM.innerText = 'hot fries'
-// originalDOM.innerText = "nice one"
-// encryptOriginalText()
-
 const appendCopiedNotification = (mouseX, mouseY) => {
     let div = document.createElement('div')
     div.className = "copied-notification"
@@ -118,3 +120,8 @@ originalEncryptedDOM.onclick = (e) => {
 closeWindowBtn.onclick = () => {
     window.close()
 }
+
+// FOR TESTING
+keywordDOM.innerText = 'hot fries'
+originalDOM.innerText = "nice one"
+encryptOriginalText()
