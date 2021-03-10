@@ -23,6 +23,10 @@ body {
   -webkit-app-region: drag;
 }
 
+body::-webkit-scrollbar {
+  display: none;
+}
+
 .input-field {
   padding: 2%;
   min-height: calc(5vw - 4%);
@@ -41,14 +45,11 @@ body {
 
 .output-field {
   padding: 2%;
+  box-sizing: border-box;
   min-height: calc(5vw - 4%);
   font-family: 'Major-Mono', monospace;
   font-size: 3vw;
   -webkit-app-region: no-drag;
-}
-
-#original-encrypted {
-  position: relative;
 }
 
 @keyframes copied {
