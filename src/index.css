@@ -94,3 +94,29 @@ body {
 #close-window-btn:hover {
   cursor: pointer;
 }
+
+@keyframes letterAnim {
+  from {
+    transform: scale(2);
+    text-shadow: 2px 2px 10px rgb(77, 77, 214),
+    -2px -2px 10px rgb(77, 77, 214),
+    -2px 2px 10px rgb(77, 77, 214),
+    2px -2px 10px rgb(77, 77, 214);
+  }
+
+  to {
+    text-shadow: 0px 0px 0px rgb(77, 77, 214),
+    0px 0px 0px rgb(77, 77, 214),
+    0px 0px 0px rgb(77, 77, 214),
+    0px 0px 0px rgb(77, 77, 214);
+    transform: scale(1);
+  }
+}
+
+.result-letter {
+  display: inline-block;
+}
+
+.result-letter:last-child {
+  animation: letterAnim 0.2s ease-out;
+}
