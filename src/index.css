@@ -59,6 +59,7 @@ body::-webkit-scrollbar {
 
 .output-field {
   padding: 2%;
+  word-break: break-word;
   box-sizing: border-box;
   min-height: calc(5vw - 4%);
   font-family: 'Major-Mono', monospace;
@@ -82,7 +83,7 @@ body::-webkit-scrollbar {
   font-size: 1.5vw;
   padding: 1%;
   animation: copied 0.7s 2 linear alternate;
-} 
+}
 
 #original-encrypted:hover {
   cursor: pointer;
