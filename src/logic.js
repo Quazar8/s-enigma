@@ -9,8 +9,11 @@ const isLetter = (c) => /[a-zA-Z]/.test(c)
 
 const createLetterSpan = (letter) => {
     const span = document.createElement('span')
-    span.innerText = letter
-    span.className = 'result-letter'
+    span.textContent = letter
+    if (letter !== ' ') {
+        span.className = 'result-letter'
+    }
+    
     return span
 }
 
@@ -37,7 +40,8 @@ const encryptOriginalText = () => {
     let keyCounter = 0
     for (let i = 0; i < text.length; i++) {
         let char = text[i]
-        if (isLetter(char)) {
+
+        if (isLetter(char)) {        
             char = encrypt(char, keyCounter)
             keyCounter++
         } 
