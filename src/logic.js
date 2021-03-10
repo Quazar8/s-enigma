@@ -17,6 +17,40 @@ const createLetterSpan = (letter) => {
     return span
 }
 
+const animateLowerElements = () => {
+    let duration = 800
+    let easing = 'ease-out'
+
+    let height = originalEncryptedDOM.offsetHeight
+    let style = window.getComputedStyle(decryptedDOM)
+    height += parseInt(style.getPropertyValue('padding-top'))
+    height += parseInt(style.getPropertyValue('padding-bottom'))
+
+    scrambledDOM.animate([
+        { transform: `translateY(-${height}px)`},
+        { transform: 'translateY(0)'}
+    ], {
+        duration,
+        easing
+    })
+
+    decryptedDOM.animate([
+        { transform: `translateY(-${height}px)`},
+        { transform: 'translateY(0)'}
+    ], {
+        duration,
+        easing
+    })
+
+    originalEncryptedDOM.animate([
+        { transform: `translateY(-100%)`},
+        { transform: 'translateY(0)'}
+    ], {
+        duration,
+        easing
+    })
+}
+
 const encrypt = (c, i) => {
     const upper = c.toUpperCase()
     const cCode = upper.charCodeAt(0)
@@ -28,36 +62,39 @@ const encrypt = (c, i) => {
     return String.fromCharCode(encCode)
 }
 
-const encryptOriginalText = () => {
-    const keyword = keywordDOM.innerText
-    if (!keyword) {
-        return
-    }
+const handleOriginalInput = () => {
+    originalEncryptedDOM.style.display = 'none'
+    let showInitialAnimation = true
 
-    originalEncryptedDOM.innerHTML = ''
-    if (originalDOM.innerText) {
-        originalEncryptedDOM.style.display = 'block'
-        originalEncryptedDOM.style.animation = 'outputContainerAnim 0.8s ease-out'
-        scrambledDOM.style.animation = "outputContainerAnim 0.8s ease-out"
-        decryptedDOM.style.animation = "outputContainerAnim 0.8s ease-out"
-    } else {
-        scrambledDOM.style.animation = "none"
-        decryptedDOM.style.animation = "none"
-        originalEncryptedDOM.style.display = 'none'
-    }
+    return () => {
+        const keyword = keywordDOM.innerText
+        if (!keyword) {
+            return
+        }
 
-    const text = originalDOM.innerText
-    let keyCounter = 0
-    for (let i = 0; i < text.length; i++) {
-        let char = text[i]
+        originalEncryptedDOM.innerHTML = ''
+        if (originalDOM.innerText && showInitialAnimation) {
+            originalEncryptedDOM.style.display = 'block'
+            animateLowerElements()
+            showInitialAnimation = false
+        } else if (!originalDOM.innerText) {
+            originalEncryptedDOM.style.display = 'none'
+            showInitialAnimation = true
+        }
 
-        if (isLetter(char)) {        
-            char = encrypt(char, keyCounter)
-            keyCounter++
-        } 
+        const text = originalDOM.innerText
+        let keyCounter = 0
+        for (let i = 0; i < text.length; i++) {
+            let char = text[i]
 
-        const span = createLetterSpan(char)
-        originalEncryptedDOM.appendChild(span)
+            if (isLetter(char)) {        
+                char = encrypt(char, keyCounter)
+                keyCounter++
+            } 
+
+            const span = createLetterSpan(char)
+            originalEncryptedDOM.appendChild(span)
+        }
     }
 }
 
@@ -109,7 +146,7 @@ const keywordChangeHandler = (e) => {
 }
 
 keywordDOM.oninput = keywordChangeHandler
-originalDOM.oninput = encryptOriginalText
+originalDOM.oninput = handleOriginalInput()
 scrambledDOM.oninput = decryptScrambledText
 
 const appendCopiedNotification = (mouseX, mouseY) => {
