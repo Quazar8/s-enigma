@@ -13,7 +13,7 @@ const createLetterSpan = (letter) => {
     if (letter !== ' ') {
         span.className = 'result-letter'
     }
-    
+
     return span
 }
 
@@ -35,6 +35,16 @@ const encryptOriginalText = () => {
     }
 
     originalEncryptedDOM.innerHTML = ''
+    if (originalDOM.innerText) {
+        originalEncryptedDOM.style.display = 'block'
+        originalEncryptedDOM.style.animation = 'outputContainerAnim 0.8s ease-out'
+        scrambledDOM.style.animation = "outputContainerAnim 0.8s ease-out"
+        decryptedDOM.style.animation = "outputContainerAnim 0.8s ease-out"
+    } else {
+        scrambledDOM.style.animation = "none"
+        decryptedDOM.style.animation = "none"
+        originalEncryptedDOM.style.display = 'none'
+    }
 
     const text = originalDOM.innerText
     let keyCounter = 0
@@ -127,5 +137,5 @@ closeWindowBtn.onclick = () => {
 
 // FOR TESTING
 keywordDOM.innerText = 'hot fries'
-originalDOM.innerText = "nice one"
-encryptOriginalText()
+// originalDOM.innerText = "nice one"
+// encryptOriginalText()

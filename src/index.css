@@ -43,6 +43,20 @@ body::-webkit-scrollbar {
   text-transform: uppercase;
 }
 
+.output-container {
+  overflow: hidden;
+}
+
+@keyframes outputContainerAnim {
+  from {
+    transform: translateY(-100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
+}
+
 .output-field {
   padding: 2%;
   box-sizing: border-box;
