@@ -103,14 +103,16 @@ body::-webkit-scrollbar {
 
 @keyframes letterAnim {
   from {
+    color:rgb(77, 77, 214);
     transform: scale(2);
-    text-shadow: 2px 2px 10px rgb(77, 77, 214),
-    -2px -2px 10px rgb(77, 77, 214),
-    -2px 2px 10px rgb(77, 77, 214),
-    2px -2px 10px rgb(77, 77, 214);
+    text-shadow: 3px 3px 10px rgb(77, 77, 214),
+    -3px -3px 10px rgb(77, 77, 214),
+    -3px 3px 10px rgb(77, 77, 214),
+    3px -3px 10px rgb(77, 77, 214);
   }
 
   to {
+    color: inherit;
     text-shadow: 0px 0px 0px rgb(77, 77, 214),
     0px 0px 0px rgb(77, 77, 214),
     0px 0px 0px rgb(77, 77, 214),
