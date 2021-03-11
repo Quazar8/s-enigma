@@ -11,7 +11,7 @@
 
 #outer-triangle {
     stroke-width: 10;
-    stroke: rgba(38, 38, 204, 0.39);
+    stroke: rgba(89, 89, 207, 0.39);
 }
 
 #middle-triangle {
@@ -21,5 +21,5 @@
 
 #inner-triangle {
     stroke-width: 10;
-    stroke: rgba(226, 117, 117, 0.39);
+    stroke: rgba(87, 45, 45, 0.6);
 }
