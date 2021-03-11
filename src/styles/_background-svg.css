@@ -13,3 +13,8 @@
     stroke-width: 10;
     stroke: rgb(38, 38, 204);
 }
+
+#middle-triangle {
+    stroke-width: 10;
+    stroke: rgb(202, 198, 198);
+}
