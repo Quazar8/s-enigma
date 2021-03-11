@@ -95,6 +95,8 @@ main {
 .window-control-container {
   display: flex;
   justify-content: flex-end;
+  position: sticky;
+  top: 0;
 }
 
 #close-window-btn {
@@ -108,6 +110,7 @@ main {
 
 #close-window-btn:hover {
   cursor: pointer;
+  color: white;
 }
 
 @keyframes letterAnim {

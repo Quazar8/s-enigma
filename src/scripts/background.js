@@ -27,7 +27,7 @@ const createTriangle = (sideLen, id) => {
         x1, yLower, x2)
     appendTriangle(points, id)
 
-    return [yUpper, yLower]
+    return [yUpper, yLower, x1, x2]
 }
 
 const appendRelativeTriangle = (yUpper, yLower, distance, id) => {
@@ -46,6 +46,6 @@ const appendRelativeTriangle = (yUpper, yLower, distance, id) => {
     appendTriangle(points, id)
 }
 
-const [yUpper, yLower] = createTriangle(100, 'inner-triangle')
+const [yUpper, yLower, x1, x2] = createTriangle(100, 'inner-triangle')
 appendRelativeTriangle(yUpper, yLower, 20, 'middle-triangle')
 appendRelativeTriangle(yUpper, yLower, 40, 'outer-triangle')
