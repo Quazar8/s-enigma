@@ -7,28 +7,36 @@
     <script defer src = "./logic.js"></script>
   </head>
   <body>
-    <section class="window-control-container">
-      <button id = "close-window-btn">&#10006;</button>
-    </section>
-    <div
-      id = "keyword"
-      contenteditable="true"
-      placeholder = "key word"
-      class = "input-field"
-    ></div>
-    <div 
-      placeholder = "original message"
-      contenteditable="true"
-      id = "original"
-      class = "input-field"></div>
-      <div class = "output-container">
-        <div id = "original-encrypted" class = "output-field"></div>
-      </div>
+    <svg id = "background-svg" viewBox = "0 0 500 300">
+      <polygon 
+        points = "250,42.5 125,257.5 375,257.5"
+        id = "outer-triangle"
+      />
+    </svg>
+    </main>
+      <section class="window-control-container">
+        <button id = "close-window-btn">&#10006;</button>
+      </section>
+      <div
+        id = "keyword"
+        contenteditable="true"
+        placeholder = "key word"
+        class = "input-field"
+      ></div>
       <div 
-        placeholder = "message to decrypt"
-        contenteditable="true" 
-        id = "scrambled"
+        placeholder = "original message"
+        contenteditable="true"
+        id = "original"
         class = "input-field"></div>
-      <div id = "decrypted" class = "output-field"></div>
+        <div class = "output-container">
+          <div id = "original-encrypted" class = "output-field"></div>
+        </div>
+        <div 
+          placeholder = "message to decrypt"
+          contenteditable="true" 
+          id = "scrambled"
+          class = "input-field"></div>
+        <div id = "decrypted" class = "output-field"></div>
+    </main>
   </body>
 </html>

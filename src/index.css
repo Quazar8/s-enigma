@@ -1,3 +1,5 @@
+@import './styles/_background-svg.css';
+
 @font-face {
   font-family: Orbitron;
   src: url('./static/orbitron.ttf')
@@ -25,6 +27,11 @@ body {
 
 body::-webkit-scrollbar {
   display: none;
+}
+
+main {
+  position: relative;
+  z-index: 10;
 }
 
 .input-field {
