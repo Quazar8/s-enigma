@@ -84,7 +84,8 @@ const handleOriginalInput = () => {
 
         const text = originalDOM.innerText
         let keyCounter = 0
-        for (let i = 0; i < text.length; i++) {
+        let result = ''
+        for (let i = 0; i < text.length - 1; i++) {
             let char = text[i]
 
             if (isLetter(char)) {        
@@ -92,9 +93,17 @@ const handleOriginalInput = () => {
                 keyCounter++
             } 
 
-            const span = createLetterSpan(char)
-            originalEncryptedDOM.appendChild(span)
+            result += char
         }
+        
+        let lastChar = text[text.length - 1]
+        if (isLetter(lastChar)) {
+            lastChar = encrypt(lastChar, keyCounter)
+        }
+
+        originalEncryptedDOM.innerText = result
+        const span = createLetterSpan(lastChar)
+        originalEncryptedDOM.appendChild(span)
     }
 }
 
