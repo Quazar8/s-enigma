@@ -11,15 +11,15 @@
 
 #outer-triangle {
     stroke-width: 10;
-    stroke: rgb(38, 38, 204);
+    stroke: rgba(38, 38, 204, 0.39);
 }
 
 #middle-triangle {
     stroke-width: 10;
-    stroke: rgb(202, 198, 198);
+    stroke: rgba(202, 198, 198, 0.39);
 }
 
 #inner-triangle {
     stroke-width: 10;
-    stroke: rgb(226, 117, 117);
+    stroke: rgba(226, 117, 117, 0.39);
 }
