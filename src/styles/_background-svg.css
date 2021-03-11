@@ -18,3 +18,8 @@
     stroke-width: 10;
     stroke: rgb(202, 198, 198);
 }
+
+#inner-triangle {
+    stroke-width: 10;
+    stroke: rgb(226, 117, 117);
+}
