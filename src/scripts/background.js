@@ -62,45 +62,40 @@ const innerTri = document.getElementById('inner-triangle')
 const middleTri = document.getElementById('middle-triangle')
 const outerTri = document.getElementById('outer-triangle')
 
-var animateInner = (iter) => {
-    iter = iter % 6
-    innerTri.animate([
+const animationTuple = (iter) => {
+    const keyframes = [
         {transform: `rotateZ(${60 + (iter - 1) * 60}deg)`},
         {transform: `rotateZ(${60 + iter * 60}deg)`}
-    ], {
+    ]
+
+    const options = {
         delay: 1000,
         duration: 300,
         fill: "forwards",
         easing: 'ease-out'
-    }).onfinish = () => {
+    }
+
+    return [keyframes, options]
+}
+
+var animateInner = (iter) => {
+    iter = iter % 6
+    const [keyframes, options] = animationTuple(iter)
+    innerTri.animate(keyframes, options).onfinish = () => {
         animateMiddle(iter)
     }
 }
 
 var animateOuter = (iter) => {
-    outerTri.animate([
-        {transform: `rotateZ(${60 + (iter - 1) * 60}deg)`},
-        {transform: `rotateZ(${60 + iter * 60}deg)`}
-    ], {
-        delay: 1000,
-        duration: 300,
-        fill: "forwards",
-        easing: 'ease-out'
-    }).onfinish = () => {
+    const [keyframes, options] = animationTuple(iter)
+    outerTri.animate(keyframes, options).onfinish = () => {
         animateInner(iter + 1)
     }
 }
 
 var animateMiddle = (iter) => {
-    middleTri.animate([
-        {transform: `rotateZ(${60 + (iter - 1) * 60}deg)`},
-        {transform: `rotateZ(${60 + iter * 60}deg)`}
-    ], {
-        delay: 1000,
-        duration: 300,
-        fill: "forwards",
-        easing: 'ease-out'
-    }).onfinish = () => {
+    const [keyframes, options] = animationTuple(iter)
+    middleTri.animate(keyframes, options).onfinish = () => {
         animateOuter(iter)
     }
 }
