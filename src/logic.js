@@ -3,6 +3,7 @@ const originalDOM = document.getElementById('original')
 const originalEncryptedDOM = document.getElementById('original-encrypted')
 const scrambledDOM = document.getElementById('scrambled')
 const decryptedDOM = document.getElementById('decrypted')
+const decryptedContainerDOM = document.getElementById('decrypted-container')
 const closeWindowBtn = document.getElementById('close-window-btn')
 
 const isLetter = (c) => /[a-zA-Z]/.test(c)
@@ -34,7 +35,7 @@ const animateLowerElements = () => {
         easing
     })
 
-    decryptedDOM.animate([
+    decryptedContainerDOM.animate([
         { transform: `translateY(-${height}px)`},
         { transform: 'translateY(0)'}
     ], {
