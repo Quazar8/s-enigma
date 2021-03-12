@@ -122,26 +122,59 @@ const decrypt = (c, i) => {
     return String.fromCharCode(decCode)
 }
 
-decryptScrambledText = () => {
-    const keyword = keywordDOM.innerText
-    if (!keyword) {
-        return
-    }
+const animateDecrypted = () => {
+    decryptedDOM.animate([
+        { transform: `translateY(-100%)`},
+        { transform: 'translateY(0)'}
+    ], {
+        duration: 800,
+        easing: 'ease-out'
+    })
+}
 
-    const text = scrambledDOM.innerText
-    let result = ''
-    let keyCounter = 0
-    for (let i = 0; i < text.length; i++) {
-        let char = text[i]
-        if (isLetter(char)) {
-            result += decrypt(char, keyCounter)
-            keyCounter++
-        } else {
+const handleDecryptInput = () => {
+    decryptedDOM.style.display = 'none'
+    let showInitialAnimation = true
+
+    return () => {
+        const keyword = keywordDOM.innerText
+        if (!keyword) {
+            return
+        }
+
+        decryptedDOM.innerHTML = ''
+        if (scrambledDOM.innerText && showInitialAnimation) {
+            decryptedDOM.style.display = 'block'
+            animateDecrypted()
+            showInitialAnimation = false
+        } else if (!scrambledDOM.innerText) {
+            decryptedDOM.style.display = 'none'
+            showInitialAnimation = true
+        }
+
+        const text = scrambledDOM.innerText
+        let keyCounter = 0
+        let result = ''
+        for (let i = 0; i < text.length - 1; i++) {
+            let char = text[i]
+
+            if (isLetter(char)) {        
+                char = decrypt(char, keyCounter)
+                keyCounter++
+            } 
+
             result += char
         }
-    }
+        
+        let lastChar = text[text.length - 1]
+        if (isLetter(lastChar)) {
+            lastChar = decrypt(lastChar, keyCounter)
+        }
 
-    decryptedDOM.innerText = result
+        decryptedDOM.innerText = result
+        const span = createLetterSpan(lastChar)
+        decryptedDOM.appendChild(span)
+    }
 }
 
 const keywordChangeHandler = (e) => {
@@ -156,7 +189,7 @@ const keywordChangeHandler = (e) => {
 
 keywordDOM.oninput = keywordChangeHandler
 originalDOM.oninput = handleOriginalInput()
-scrambledDOM.oninput = decryptScrambledText
+scrambledDOM.oninput = handleDecryptInput()
 
 const appendCopiedNotification = (mouseX, mouseY) => {
     let div = document.createElement('div')
