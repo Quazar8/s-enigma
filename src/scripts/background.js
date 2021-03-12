@@ -1,6 +1,6 @@
 const svg = document.getElementById('background-svg')
 const uri = 'http://www.w3.org/2000/svg'
-const xMid = 150, yMid = 150//centroid coordinates of the svg triangles
+const xMid = 150, yMid = 130//centroid coordinates of the svg triangles
 const yCorrection = 24
 
 // const circle = document.createElementNS(uri, 'circle')

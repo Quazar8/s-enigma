@@ -42,6 +42,8 @@ main {
   -webkit-app-region: no-drag;
   font-size: 3vw;
   text-transform: uppercase;
+  word-break: break-word;
+  box-sizing: border-box;
 }
 
 .input-field[placeholder]:empty:before {
