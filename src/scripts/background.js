@@ -6,10 +6,11 @@ const createTrianglePointsStr = (xMid, yUpper, x1, yLower, x2) => {
     return `${xMid},${yUpper} ${x1},${yLower} ${x2},${yLower}`
 }
 
-const appendTriangle = (points, id) => {
+const appendTriangle = (points, id, cx, cy) => {
     const triangle = document.createElementNS(uri,'polygon')
     triangle.id = id
     triangle.setAttribute('points', points)
+    triangle.setAttribute('transform-origin', `${cx} ${cy}`)
     svg.appendChild(triangle)
 }
 
@@ -25,9 +26,11 @@ const createTriangle = (sideLen, id) => {
     // const points = `${xMid},${yUpper} ${x1},${yLower} ${x2},${yLower}`
     const points = createTrianglePointsStr(xMid, yUpper,
         x1, yLower, x2)
-    appendTriangle(points, id)
+    const cy = (yLower + yUpper) / 2
+    const cx = (x1 + x2) / 2 
+    appendTriangle(points, id, cx, cy + 12.5)
 
-    return [yUpper, yLower, x1, x2]
+    return [yUpper, yLower]
 }
 
 const appendRelativeTriangle = (yUpper, yLower, distance, id) => {
@@ -43,9 +46,19 @@ const appendRelativeTriangle = (yUpper, yLower, distance, id) => {
 
     const points = createTrianglePointsStr(xMid, yUpperNew,
         x1, yLowerNew, x2)
-    appendTriangle(points, id)
+    const cy = (yUpperNew + yLowerNew) / 2
+    const cx = (x1 + x2) / 2
+    appendTriangle(points, id, cx, cy)
 }
 
-const [yUpper, yLower, x1, x2] = createTriangle(100, 'inner-triangle')
+const [yUpper, yLower] = createTriangle(100, 'inner-triangle')
 appendRelativeTriangle(yUpper, yLower, 20, 'middle-triangle')
 appendRelativeTriangle(yUpper, yLower, 40, 'outer-triangle')
+
+// const innerTri = document.getElementById('inner-triangle')
+// innerTri.animate([
+//     {transform: 'rotateZ(360deg)'}
+// ], {
+//     duration: 10000,
+//     iterations: Infinity
+// })
