@@ -12,14 +12,17 @@
 #outer-triangle {
     stroke-width: 10;
     stroke: rgba(89, 89, 207, 0.39);
+    filter: url('#displacementFilter')
 }
 
 #middle-triangle {
     stroke-width: 10;
     stroke: rgba(202, 198, 198, 0.39);
+    filter: url('#displacementFilter')
 }
 
 #inner-triangle {
     stroke-width: 10;
     stroke: rgba(87, 45, 45, 0.6);
+    filter: url('#displacementFilter')
 }

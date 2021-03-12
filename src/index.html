@@ -12,6 +12,12 @@
       id = "background-svg" 
       viewBox = "0 0 300 300"
     >
+      <filter id = "displacementFilter">
+        <feTurbulence type="turbulence" baseFrequency="0.05"
+            numOctaves="20" result="turbulence"/>
+        <feDisplacementMap in2="turbulence" in="SourceGraphic"
+            scale="10" xChannelSelector="R" yChannelSelector="G"/>
+      </filter>
     </svg>
     <main>
       <section class="window-control-container">
