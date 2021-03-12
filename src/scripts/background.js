@@ -1,16 +1,23 @@
 const svg = document.getElementById('background-svg')
 const uri = 'http://www.w3.org/2000/svg'
-const xMid = 150, yMid = 175 //centroid coordinates of the svg triangles
+const xMid = 150, yMid = 150//centroid coordinates of the svg triangles
+
+// const circle = document.createElementNS(uri, 'circle')
+// circle.setAttribute('cx', xMid)
+// circle.setAttribute('cy', yMid)
+// circle.setAttribute('r', 10)
+// circle.setAttribute('fill', 'yellow')
+// svg.appendChild(circle)
 
 const createTrianglePointsStr = (xMid, yUpper, x1, yLower, x2) => {
     return `${xMid},${yUpper} ${x1},${yLower} ${x2},${yLower}`
 }
 
-const appendTriangle = (points, id, cx, cy) => {
+const appendTriangle = (points, id) => {
     const triangle = document.createElementNS(uri,'polygon')
     triangle.id = id
     triangle.setAttribute('points', points)
-    triangle.setAttribute('transform-origin', `${cx} ${cy}`)
+    triangle.setAttribute('transform-origin', `${xMid} ${yMid + 12}`)
     svg.appendChild(triangle)
 }
 
@@ -23,12 +30,9 @@ const createTriangle = (sideLen, id) => {
     const yUpper = yMid - vLen / 2
     const yLower = yMid + vLen / 2
 
-    // const points = `${xMid},${yUpper} ${x1},${yLower} ${x2},${yLower}`
     const points = createTrianglePointsStr(xMid, yUpper,
         x1, yLower, x2)
-    const cy = (yLower + yUpper) / 2
-    const cx = (x1 + x2) / 2 
-    appendTriangle(points, id, cx, cy + 12.5)
+    appendTriangle(points, id)
 
     return [yUpper, yLower]
 }
@@ -46,19 +50,59 @@ const appendRelativeTriangle = (yUpper, yLower, distance, id) => {
 
     const points = createTrianglePointsStr(xMid, yUpperNew,
         x1, yLowerNew, x2)
-    const cy = (yUpperNew + yLowerNew) / 2
-    const cx = (x1 + x2) / 2
-    appendTriangle(points, id, cx, cy)
+    appendTriangle(points, id)
 }
 
 const [yUpper, yLower] = createTriangle(100, 'inner-triangle')
 appendRelativeTriangle(yUpper, yLower, 20, 'middle-triangle')
 appendRelativeTriangle(yUpper, yLower, 40, 'outer-triangle')
 
-// const innerTri = document.getElementById('inner-triangle')
-// innerTri.animate([
-//     {transform: 'rotateZ(360deg)'}
-// ], {
-//     duration: 10000,
-//     iterations: Infinity
-// })
+const innerTri = document.getElementById('inner-triangle')
+const middleTri = document.getElementById('middle-triangle')
+const outerTri = document.getElementById('outer-triangle')
+
+var animateInner = (iter) => {
+    iter = (iter % 6)
+    console.log('angle', 60 + iter * 60)
+    innerTri.animate([
+        {transform: `rotateZ(${60 + (iter - 1) * 60}deg)`},
+        {transform: `rotateZ(${60 + iter * 60}deg)`}
+    ], {
+        delay: 1000,
+        duration: 300,
+        fill: "forwards",
+        easing: 'ease-out'
+    }).onfinish = () => {
+        animateMiddle(iter)
+    }
+}
+
+var animateOuter = (iter) => {
+    outerTri.animate([
+        {transform: `rotateZ(${60 + (iter - 1) * 60}deg)`},
+        {transform: `rotateZ(${60 + iter * 60}deg)`}
+    ], {
+        delay: 1000,
+        duration: 300,
+        fill: "forwards",
+        easing: 'ease-out'
+    }).onfinish = () => {
+        animateInner(iter + 1)
+    }
+}
+
+var animateMiddle = (iter) => {
+    middleTri.animate([
+        {transform: `rotateZ(${60 + (iter - 1) * 60}deg)`},
+        {transform: `rotateZ(${60 + iter * 60}deg)`}
+    ], {
+        delay: 1000,
+        duration: 300,
+        fill: "forwards",
+        easing: 'ease-out'
+    }).onfinish = () => {
+        animateOuter(iter)
+    }
+}
+
+animateInner(0)
