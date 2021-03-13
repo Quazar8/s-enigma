@@ -19,7 +19,7 @@ const createLetterSpan = (letter) => {
 }
 
 const animateLowerElements = () => {
-    let duration = 800
+    let duration = 500
     let easing = 'ease-out'
 
     let height = originalEncryptedDOM.offsetHeight
@@ -128,7 +128,7 @@ const animateDecrypted = () => {
         { transform: `translateY(-100%)`},
         { transform: 'translateY(0)'}
     ], {
-        duration: 800,
+        duration: 500,
         easing: 'ease-out'
     })
 }
