@@ -34,10 +34,15 @@ body::-webkit-scrollbar {
 main {
   position: relative;
   z-index: 10;
+  height: 100%;
 }
 
+/* main * {
+  border: 2px solid red;
+} */
+
 .input-field {
-  padding: 2%;
+  padding: 2% 2%;
   min-height: calc(5vw - 4%);
   -webkit-app-region: no-drag;
   font-size: 3vw;
@@ -62,6 +67,11 @@ main {
   text-transform: uppercase;
 }
 
+#keyword {
+  color: gold;
+  margin: 4% 0 0 0;
+}
+
 .output-container {
   overflow: hidden;
 }
@@ -75,6 +85,10 @@ main {
   font-size: 3vw;
   -webkit-app-region: no-drag;
   border: 0.2vw solid transparent;
+}
+
+#encrypted-container {
+  min-height: 12vw;
 }
 
 @keyframes copied {
@@ -98,10 +112,6 @@ main {
 #original-encrypted:hover {
   cursor: pointer;
   border: 0.2vw dashed skyblue;
-}
-
-#keyword {
-  color: gold;
 }
 
 .window-control-container {

@@ -12,26 +12,27 @@ const animateLowerElements = () => {
     let duration = 500
     let easing = 'ease-out'
 
-    let height = originalEncryptedDOM.offsetHeight
-    let style = window.getComputedStyle(decryptedDOM)
-    height += parseInt(style.getPropertyValue('padding-top'))
-    height += parseInt(style.getPropertyValue('padding-bottom'))
+    //might be needed again int he future if elements are repositioned
+    // let height = originalEncryptedDOM.offsetHeight
+    // let style = window.getComputedStyle(decryptedDOM)
+    // height += parseInt(style.getPropertyValue('padding-top'))
+    // height += parseInt(style.getPropertyValue('padding-bottom'))
 
-    scrambledDOM.animate([
-        { transform: `translateY(-${height}px)`},
-        { transform: 'translateY(0)'}
-    ], {
-        duration,
-        easing
-    })
+    // scrambledDOM.animate([
+    //     { transform: `translateY(-${height}px)`},
+    //     { transform: 'translateY(0)'}
+    // ], {
+    //     duration,
+    //     easing
+    // })
 
-    decryptedContainerDOM.animate([
-        { transform: `translateY(-${height}px)`},
-        { transform: 'translateY(0)'}
-    ], {
-        duration,
-        easing
-    })
+    // decryptedContainerDOM.animate([
+    //     { transform: `translateY(-${height}px)`},
+    //     { transform: 'translateY(0)'}
+    // ], {
+    //     duration,
+    //     easing
+    // })
 
     originalEncryptedDOM.animate([
         { transform: `translateY(-100%)`},
