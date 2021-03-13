@@ -46,6 +46,10 @@ main {
   box-sizing: border-box;
 }
 
+.input-field:hover {
+  cursor: pointer;
+}
+
 .input-field:focus {
   outline: none;
 }
@@ -70,6 +74,7 @@ main {
   font-family: 'Major-Mono', monospace;
   font-size: 3vw;
   -webkit-app-region: no-drag;
+  border: 0.2vw solid transparent;
 }
 
 @keyframes copied {
@@ -92,6 +97,7 @@ main {
 
 #original-encrypted:hover {
   cursor: pointer;
+  border: 0.2vw dashed skyblue;
 }
 
 #keyword {

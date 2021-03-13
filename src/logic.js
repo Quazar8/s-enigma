@@ -208,4 +208,4 @@ closeWindowBtn.onclick = () => {
 // FOR TESTING
 // keywordDOM.innerText = 'hot fries'
 // originalDOM.innerText = "nice one"
-// encryptOriginalText()
+// originalInputHandler()
