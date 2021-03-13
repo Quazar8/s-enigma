@@ -206,6 +206,6 @@ closeWindowBtn.onclick = () => {
 }
 
 // FOR TESTING
-keywordDOM.innerText = 'hot fries'
+// keywordDOM.innerText = 'hot fries'
 // originalDOM.innerText = "nice one"
 // encryptOriginalText()

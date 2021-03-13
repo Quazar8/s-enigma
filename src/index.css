@@ -17,6 +17,7 @@ html {
   color: rgb(250, 245, 245);
   font-family: 'Orbitron', monospace;
   height: 100%;
+  text-align: center;
 }
 
 body {
