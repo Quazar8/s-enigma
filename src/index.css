@@ -136,9 +136,6 @@ main {
 }
 
 .result-letter {
-  display: inline-block;
-}
-
-.result-letter:last-child {
   animation: letterAnim 0.2s ease-out;
+  display: inline-block;
 }

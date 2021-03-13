@@ -8,16 +8,6 @@ const closeWindowBtn = document.getElementById('close-window-btn')
 
 const isLetter = (c) => /[a-zA-Z]/.test(c)
 
-const createLetterSpan = (letter) => {
-    const span = document.createElement('span')
-    span.textContent = letter
-    if (letter !== ' ') {
-        span.className = 'result-letter'
-    }
-
-    return span
-}
-
 const animateLowerElements = () => {
     let duration = 500
     let easing = 'ease-out'
@@ -87,8 +77,8 @@ const handleOriginalInput = () => {
         }
 
         let keyCounter = 0
-        let result = ''
-        for (let i = 0; i < text.length - 1; i++) {
+        let innerHTML = ''
+        for (let i = 0; i < text.length; i++) {
             let char = text[i]
 
             if (isLetter(char)) {        
@@ -96,22 +86,14 @@ const handleOriginalInput = () => {
                 keyCounter++
             } 
 
-            result += char
-        }
-        
-        let lastChar = text[text.length - 1]
-        if (isLetter(lastChar)) {
-            lastChar = encrypt(lastChar, keyCounter)
-        }
-
-        if (oldEncText === result + lastChar) {
-            originalEncryptedDOM.innerText = result + lastChar
-            return
+            if (char === oldEncText[i] || char === ' ') {
+                innerHTML += char
+            } else {
+                innerHTML += `<span class = "result-letter">${char}</span>`
+            }
         }
 
-        originalEncryptedDOM.innerText = result
-        const span = createLetterSpan(lastChar)
-        originalEncryptedDOM.appendChild(span)
+        originalEncryptedDOM.innerHTML = innerHTML
     }
 }
 
@@ -163,8 +145,8 @@ const handleDecryptInput = () => {
 
         const text = scrambledDOM.innerText
         let keyCounter = 0
-        let result = ''
-        for (let i = 0; i < text.length - 1; i++) {
+        let innerHTML = ''
+        for (let i = 0; i < text.length; i++) {
             let char = text[i]
 
             if (isLetter(char)) {        
@@ -172,22 +154,14 @@ const handleDecryptInput = () => {
                 keyCounter++
             } 
 
-            result += char
-        }
-        
-        let lastChar = text[text.length - 1]
-        if (isLetter(lastChar)) {
-            lastChar = decrypt(lastChar, keyCounter)
-        }
-
-        if (oldDecText === result + lastChar) {
-            decryptedDOM.innerText = result + lastChar
-            return
+            if (char === oldDecText[i] || char === ' ') {
+                innerHTML += char
+            } else {
+                innerHTML += `<span class = "result-letter">${char}</span>`
+            }
         }
 
-        decryptedDOM.innerText = result
-        const span = createLetterSpan(lastChar)
-        decryptedDOM.appendChild(span)
+        decryptedDOM.innerHTML = innerHTML
     }
 }
 
