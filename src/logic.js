@@ -73,17 +73,19 @@ const handleOriginalInput = () => {
             return
         }
 
+        const oldEncText = originalEncryptedDOM.innerText
+        const text = originalDOM.innerText
         originalEncryptedDOM.innerHTML = ''
-        if (originalDOM.innerText && showInitialAnimation) {
+
+        if (text && showInitialAnimation) {
             originalEncryptedDOM.style.display = 'block'
             animateLowerElements()
             showInitialAnimation = false
-        } else if (!originalDOM.innerText) {
+        } else if (!text) {
             originalEncryptedDOM.style.display = 'none'
             showInitialAnimation = true
         }
 
-        const text = originalDOM.innerText
         let keyCounter = 0
         let result = ''
         for (let i = 0; i < text.length - 1; i++) {
@@ -100,6 +102,11 @@ const handleOriginalInput = () => {
         let lastChar = text[text.length - 1]
         if (isLetter(lastChar)) {
             lastChar = encrypt(lastChar, keyCounter)
+        }
+
+        if (oldEncText === result + lastChar) {
+            originalEncryptedDOM.innerText = result + lastChar
+            return
         }
 
         originalEncryptedDOM.innerText = result
@@ -143,6 +150,7 @@ const handleDecryptInput = () => {
             return
         }
 
+        const oldDecText = decryptedDOM.innerText
         decryptedDOM.innerHTML = ''
         if (scrambledDOM.innerText && showInitialAnimation) {
             decryptedDOM.style.display = 'block'
@@ -170,6 +178,11 @@ const handleDecryptInput = () => {
         let lastChar = text[text.length - 1]
         if (isLetter(lastChar)) {
             lastChar = decrypt(lastChar, keyCounter)
+        }
+
+        if (oldDecText === result + lastChar) {
+            decryptedDOM.innerText = result + lastChar
+            return
         }
 
         decryptedDOM.innerText = result
