@@ -11,7 +11,6 @@
 }
 
 html {
-  /* background-color: rgb(6, 5, 14); */
   background: radial-gradient(rgb(22, 50, 114), 
   rgb(6, 5, 14));
   color: rgb(250, 245, 245);
@@ -47,11 +46,15 @@ main {
   box-sizing: border-box;
 }
 
+.input-field:focus {
+  outline: none;
+}
+
 .input-field[placeholder]:empty:before {
   content: attr(placeholder);
   color: grey;
   font-weight: bolder;
-  font-size: 2vw;
+  font-size: 3vw;
   text-transform: uppercase;
 }
 
