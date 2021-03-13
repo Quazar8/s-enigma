@@ -178,19 +178,22 @@ const handleDecryptInput = () => {
     }
 }
 
+const originalInputHandler = handleOriginalInput()
+const decryptInputHandler = handleDecryptInput()
+
 const keywordChangeHandler = (e) => {
     if (originalDOM.innerText) {
-        encryptOriginalText()
+        originalInputHandler()
     }
 
     if (scrambledDOM.innerText) {
-        decryptScrambledText()
+        decryptInputHandler()
     }
 }
 
 keywordDOM.oninput = keywordChangeHandler
-originalDOM.oninput = handleOriginalInput()
-scrambledDOM.oninput = handleDecryptInput()
+originalDOM.oninput = originalInputHandler
+scrambledDOM.oninput = decryptInputHandler
 
 const appendCopiedNotification = (mouseX, mouseY) => {
     let div = document.createElement('div')
