@@ -107,7 +107,7 @@ main {
   font-size: 1.5vw;
   padding: 1%;
   z-index: 11;
-  animation: copied 0.7s 2 linear alternate;
+  animation: copied 0.7s 2 ease-in-out alternate;
 }
 
 #original-encrypted:hover {
