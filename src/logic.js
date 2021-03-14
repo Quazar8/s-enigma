@@ -187,14 +187,27 @@ const appendCopiedNotification = (mouseX, mouseY) => {
     let div = document.createElement('div')
     div.className = "copied-notification"
     div.innerText = "Copied!"
-    div.style.top = mouseY + 'px'
-    div.style.left = mouseX + 10 + 'px'
+
+    document.body.appendChild(div)
+    let {width, height} = window.getComputedStyle(div)
+    width = parseInt(width)
+    height = parseInt(height)
+
+    if (mouseX + 10 + width <= window.innerWidth)    
+        div.style.left = mouseX + 10 + 'px'
+    else {
+        div.style.left = mouseX - width - 10 + 'px'
+    }
+
+    if (mouseY + height <= window.innerHeight) {
+        div.style.top = mouseY + 'px'
+    } else {
+        div.style.top = mouseY - 5 - height + 'px'
+    }
 
     div.onanimationend = () => {
         document.body.removeChild(div)
     }
-
-    document.body.appendChild(div)
 }
 
 originalEncryptedDOM.onclick = (e) => {
