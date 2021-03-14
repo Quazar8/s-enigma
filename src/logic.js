@@ -199,7 +199,7 @@ const appendCopiedNotification = (mouseX, mouseY) => {
 
 originalEncryptedDOM.onclick = (e) => {
     window.preloaded.copyToClip(originalEncryptedDOM.innerText)
-    appendCopiedNotification(e.pageX, e.pageY)
+    appendCopiedNotification(e.clientX, e.clientY)
 }
 
 closeWindowBtn.onclick = () => {
