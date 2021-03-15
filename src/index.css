@@ -73,6 +73,21 @@ main {
   margin: 4% 0 0 0;
 }
 
+@keyframes keywordPlaceholder {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+#keyword:empty:before {
+  color: rgba(255, 215, 0, 0.5);
+  animation: keywordPlaceholder 1.5s infinite alternate ease-out;
+}
+
 .output-container {
   overflow: hidden;
 }
