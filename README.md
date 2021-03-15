@@ -2,8 +2,7 @@
 
 ## A simple electron js desktop app for encrypting and decrypting texts.
 
-### The app consists of three input fields. The one on the top is for the keyword used to encrypt and decrypt the text. Having a keyword typed in and 
-a text for it to be used on will show the resulted texts under the appropriate input fields with an animation. Changing either the keyword or the text will result in changing the output texts as well.
+The app consists of three input fields. The one on the top is for the keyword used to encrypt and decrypt the text. Having a keyword typed in and a text for it to be used on will show the resulted texts under the appropriate input fields with an animation. Changing either the keyword or the text will result in changing the output texts as well.
 
 ## Technologies being used:
 * **electron.js**
