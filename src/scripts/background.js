@@ -2,6 +2,7 @@ const svg = document.getElementById('background-svg')
 const uri = 'http://www.w3.org/2000/svg'
 const xMid = 150, yMid = 130//centroid coordinates of the svg triangles
 const yCorrection = 24
+ 
 
 // const circle = document.createElementNS(uri, 'circle')
 // circle.setAttribute('cx', xMid)
@@ -100,4 +101,49 @@ var animateMiddle = (iter) => {
     }
 }
 
-animateInner(0)
+const showMain = () => {
+    const main = document.getElementsByTagName('main')[0]
+    main.style.display = 'block'
+    main.animate([
+        {opacity: 0},
+        {opacity: 1}
+    ], {
+        duration: 1000,
+        easing: 'ease-out'
+    })
+}
+
+const introAnimation = () => {
+    const duration = 1000
+    const easing = 'ease-out'
+    const initialScale = 5
+
+    outerTri.animate([
+        {transform: `scale(${initialScale})`},
+        {transform: 'scale(1)'}
+    ], {
+        duration,
+        easing
+    })
+
+    middleTri.animate([
+        {transform: `scale(${initialScale})`},
+        {transform: 'scale(1)'}
+    ], {
+        duration,
+        easing
+    })
+
+    innerTri.animate([
+        {transform: `scale(${initialScale})`},
+        {transform: 'scale(1)'}
+    ], {
+        duration,
+        easing
+    }).onfinish = () => {
+        showMain()
+        animateInner(0)
+    }
+}
+
+introAnimation()
